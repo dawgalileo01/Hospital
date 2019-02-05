@@ -1,0 +1,66 @@
+/* Inicio registrar.php */
+    .registrar{
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+        background-image: url("../images/registro.png");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+    }
+
+    .error{
+        color: red;
+    }
+    
+    .cabecera>h1 {
+        color: red;
+        text-align: center;
+        margin-top: 3%;
+    }
+
+    .formulario {
+        display: flex;
+        flex-flow: column nowrap; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    .formulario>h1{
+        color: rgb(2, 78, 2);
+        font-size: 32px;
+    }
+
+    .formulario>form>fieldset{
+        text-align: center;
+        border: 1px solid black;
+    }
+    .formulario>form>fieldset>legend{
+        font-size: 24px;
+    }
+
+    .formulario>form>fieldset>p>label{
+        color: black;
+        text-shadow: 2px 2px 9px #000000;
+    }
+
+    .formulario>form>fieldset>p>input[type=submit]{
+        font-size: 18px;
+    }
+
+    .formulario>form>fieldset>p>button{
+        font-family: Arial;
+        font-size: 18px;
+    }
+
+    .formulario>form>fieldset>p>button[type=submit]>i{
+        color:rgb(41, 128, 41);
+    }
+
+    .formulario>form>fieldset>p>button>i{
+        color: rgb(241, 25, 25);
+    }
+
+/* Fin registrar.php */
