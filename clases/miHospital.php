@@ -203,5 +203,91 @@ class miHospital
 
         }
     }
+
+    public function infoPaciente($dni)
+    {
+        try {
+            $sql = "SELECT DNI, NOMBRE, APELLIDOS, CORREO, DIRECCION, CPOSTAL, CIUDAD, PROVINCIA, EXPEDIENTE, SEVERIDAD FROM pacientes WHERE DNI=?";
+            $consulta = $this->conex->prepare($sql);
+            $consulta->bindParam(1, $dni);
+            $consulta->execute();
+
+            $paciente = $consulta->fetch(PDO::FETCH_NUM);
+            echo "<p>DNI: " . $paciente[0] . "</p>";
+            echo "<p>NOMBRE: " . $paciente[1] . "</p>";
+            echo "<p>APELLIDOS: " . $paciente[2] . "</p>";
+            echo "<p>CORREO: " . $paciente[3] . "</p>";
+            echo "<p>DIRECCION: " . $paciente[4] . "</p>";
+            echo "<p>CPOSTAL: " . $paciente[5] . "</p>";
+            echo "<p>CIUDAD: " . $paciente[6] . "</p>";
+            echo "<p>PROVINCIA: " . $paciente[7] . "</p>";
+            echo "<p>EXPEDIENTE: " . $paciente[8] . "</p>";
+            echo "<p>SEVERIDAD: " . $paciente[9] . "</p>";
+
+            echo "<form action='modificarPaciente.php' method='post'>";
+            echo "<input type='hidden' name='dni' value='" . $dni . "'>";
+            echo "<input type='submit' value='Modificar' name='modificar'>";
+            echo "</form>";
+        } catch (PDOException $e) {
+            echo "<p>Consulta: <b>" . $sql_query . "</p>";
+            echo "<p class='error'>Error:" . $e->getMessage() . "</p>";
+        }
+    }
+
+
+    public function modificarPaciente($dni)
+    {
+        try {
+            $sql = "SELECT DNI, NOMBRE, APELLIDOS, CORREO, DIRECCION, CPOSTAL, CIUDAD, PROVINCIA, EXPEDIENTE, SEVERIDAD FROM pacientes WHERE DNI=?";
+            $consulta = $this->conex->prepare($sql);
+            $consulta->bindParam(1, $dni);
+            $consulta->execute();
+
+            $paciente = $consulta->fetch(PDO::FETCH_NUM);
+            echo "<form action='guardarPaciente.php' method='post' enctype='multipart/form-data'>";
+            echo "<p>DNI: " . $paciente[0] . "</p>";
+            echo "<p>NOMBRE: " . $paciente[1] . "</p>";
+            echo "<p>APELLIDOS: " . $paciente[2] . "</p>";
+            echo "<p>CORREO: " . $paciente[3] . "</p>";
+            echo "<p>DIRECCION: <input type='text' name='direccion' value='" . $paciente[4] . "'></p>";
+            echo "<p>CPOSTAL: <input type='text' name='cpostal' value='" . $paciente[5] . "'></p>";
+            echo "<p>CIUDAD: <input type='text' name='ciudad' value='" . $paciente[6] . "'></p>";
+            echo "<p>PROVINCIA: <input type='text' name='provincia' value='" . $paciente[7] . "'></p>";
+            echo "<p>EXPEDIENTE: <input type='text' name='expediente' value='" . $paciente[8] . "'></p>";
+            echo "<p>SEVERIDAD: <input type='text' name='severidad' value='" . $paciente[9] . "'></p>";
+
+            echo "<input type='hidden' name='dni' value='" . $dni . "'>";
+            echo "<input type='submit' value='Guardar Cambios' name='guardar'>";
+            echo "</form>";
+        } catch (PDOException $e) {
+            echo "<p>Consulta: <b>" . $sql_query . "</b></p>";
+            echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
+        }
+
+    }
+
+
+    public function actualizarPaciente($dni, $direccion, $cpostal, $ciudad, $provincia, $expediente, $severidad)
+    {
+        try {
+            $sql = "UPDATE pacientes SET DIRECCION=?,CPOSTAL=?,CIUDAD=?,PROVINCIa=?,EXPEDIENTE=?,SEVERIDAD=? WHERE dni=?";
+
+            $consulta = $this->conex->prepare($sql);
+            $consulta->bindParam(1, $direccion);
+            $consulta->bindParam(2, $cpostal);
+            $consulta->bindParam(3, $ciudad);
+            $consulta->bindParam(4, $provincia);
+            $consulta->bindParam(5, $expediente);
+            $consulta->bindParam(6, $severidad);
+            $consulta->bindParam(7, $dni);
+
+            $consulta->execute();
+            echo "<p>Paciente actualizado con exito</p>";
+            echo "<a href='index.php'>Volver</a>";
+        } catch (PDOException $e) {
+            echo "<p>Consulta: <b>" . $sql_query . "</b></p>";
+            echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
+        }
+    }
 }
 ?>
