@@ -108,5 +108,30 @@ class miHospital
     }
 
     
+    public function altaPaciente($dni, $nombre, $apellidos, $correo, $direccion, $cpostal, $ciudad, $provincia, $descripcion, $severidad, $dniDoctor) {
+        try {
+            $sql = "INSERT INTO pacientes(DNI, NOMBRE, APELLIDOS, CORREO, DIRECCION, CPOSTAL, CIUDAD, PROVINCIA, EXPEDIENTE, SEVERIDAD, DNI_DOCTOR) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+            $consulta = $this->conex->prepare($sql);
+            $consulta->bindParam(1, $dni);
+            $consulta->bindParam(2, $nombre);
+            $consulta->bindParam(3, $apellidos);
+            $consulta->bindParam(4, $correo);
+            $consulta->bindParam(5, $direccion);
+            $consulta->bindParam(6, $cpostal);
+            $consulta->bindParam(7, $ciudad);
+            $consulta->bindParam(8, $provincia);
+            $consulta->bindParam(9, $descripcion);
+            $consulta->bindParam(10, $severidad);
+            $consulta->bindParam(11, $dniDoctor);
+
+            $consulta->execute();
+
+           echo "<p>" . $sql . "</p>";
+           echo "<p>Paciente registrado con éxito</p>";
+        } catch (PDOException $e) {
+			echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
+        }
+    }
 }
 ?>
