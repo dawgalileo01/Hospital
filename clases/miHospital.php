@@ -54,6 +54,7 @@ class miHospital
         }
     }
 
+
     public function buscarPaciente($opc,$valor){
         try {
             $opc=$_REQUEST["opciones"];
@@ -119,6 +120,87 @@ class miHospital
 
         } catch (PDOException $e) {
             echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
+        }
+    }
+
+    public function listarPacientes($dniDoctor){
+        try{
+            $sql="SELECT DNI, NOMBRE, APELLIDOS, CORREO, DIRECCION, CPOSTAL, CIUDAD, PROVINCIA, EXPEDIENTE, SEVERIDAD FROM pacientes WHERE DNI_DOCTOR=?";
+            $consulta=$this->conex->prepare($sql);
+            $consulta->bindParam(1, $dniDoctor);
+            $consulta->execute();
+            if ($consulta->rowCount() > 0) {
+                echo "<table id='listar_table'>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th>Dni</th>";
+                echo "<th>Nombre</th>";
+                echo "<th>Apellidos</th>";
+                echo "<th>Correo</th>";
+                echo "<th>Dirección</th>";
+                echo "<th>C. Postal</th>";
+                echo "<th>Ciudad</th>";
+                echo "<th>Provincia</th>";
+                echo "<th>Expedinete</th>";
+                echo "<th>Severidad</th>";
+                echo "<th>Borrar</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+                while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)){
+                    $dni="";
+                    echo "<tr>";
+                        foreach ($fila as $clave => $valor) {
+                            if ($clave=="DNI"){
+                                $dni=$valor;
+                                echo "<td>";
+                                echo "<a href='mostrarPaciente.php?dni=" . $valor . "'>" . $valor . "</a>";
+                                echo "</td>";
+                            } else {
+                                echo "<td>" . $valor . "</td>";
+                            }
+                            
+                        }
+                    echo "<td><input type='checkbox' name='borrar[]' value='" . $dni . "'></td>";
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo "<p>No tiene ningún paciente.</p>";
+            }
+        } catch (PDOException $e){
+            echo "<p>Consulta: <b>" . $sql . "</b></p>";
+            echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
+        }
+
+    }
+
+    
+    public function altaPaciente($dni, $nombre, $apellidos, $correo, $direccion, $cpostal, $ciudad, $provincia, $descripcion, $severidad, $dniDoctor) {
+        try {
+            $sql = "INSERT INTO pacientes(DNI, NOMBRE, APELLIDOS, CORREO, DIRECCION, CPOSTAL, CIUDAD, PROVINCIA, EXPEDIENTE, SEVERIDAD, DNI_DOCTOR) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+            $consulta = $this->conex->prepare($sql);
+            $consulta->bindParam(1, $dni);
+            $consulta->bindParam(2, $nombre);
+            $consulta->bindParam(3, $apellidos);
+            $consulta->bindParam(4, $correo);
+            $consulta->bindParam(5, $direccion);
+            $consulta->bindParam(6, $cpostal);
+            $consulta->bindParam(7, $ciudad);
+            $consulta->bindParam(8, $provincia);
+            $consulta->bindParam(9, $descripcion);
+            $consulta->bindParam(10, $severidad);
+            $consulta->bindParam(11, $dniDoctor);
+
+            $consulta->execute();
+
+           echo "<p>" . $sql . "</p>";
+           echo "<p>Paciente registrado con éxito</p>";
+        } catch (PDOException $e) {
+			echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
+
         }
     }
 }

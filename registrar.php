@@ -73,7 +73,7 @@ include('./clases/miConexion.php');
                 <p>
                 
                     <button type="submit" name="registro"><i class="fa fa-check"></i> Registrar</button>
-                    <button onclick="location='index.html'"><i class="fa fa-close"></i> Cancelar</button>
+                    <button onclick="location='index.php'"><i class="fa fa-close"></i> Cancelar</button>
                 </p>
             </fieldset>
         </form>
