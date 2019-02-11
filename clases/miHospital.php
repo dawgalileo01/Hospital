@@ -283,7 +283,7 @@ class miHospital
 
             $consulta->execute();
             echo "<p>Paciente actualizado con exito</p>";
-            echo "<a href='index.php'>Volver</a>";
+            echo "<a href='bienvenida.php'>Volver</a>";
         } catch (PDOException $e) {
             echo "<p>Consulta: <b>" . $sql_query . "</b></p>";
             echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
