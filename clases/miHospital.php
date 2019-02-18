@@ -130,7 +130,7 @@ class miHospital
             $consulta->bindParam(1, $dniDoctor);
             $consulta->execute();
             if ($consulta->rowCount() > 0) {
-                echo "<table id='listar_table'>";
+                echo "<table class='tablaListar'";
                 echo "<thead>";
                 echo "<tr>";
                 echo "<th>Dni</th>";
@@ -141,7 +141,7 @@ class miHospital
                 echo "<th>C. Postal</th>";
                 echo "<th>Ciudad</th>";
                 echo "<th>Provincia</th>";
-                echo "<th>Expedinete</th>";
+                echo "<th>Expediente</th>";
                 echo "<th>Severidad</th>";
                 echo "<th>Borrar</th>";
                 echo "</tr>";

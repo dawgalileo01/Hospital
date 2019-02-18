@@ -15,9 +15,12 @@
     <title>Listado pacientes - Hospital</title>
     <link rel="stylesheet" href="./css/estilo.css">
 </head>
-<body>
-    <?php
-        $hospital->listarPacientes($_SESSION["dni"]);
-    ?>
+<body class="listar">
+    <article class="cuerpoListar">
+        <h3>Lista de pacientes</h3>
+        <?php
+            $hospital->listarPacientes($_SESSION["dni"]);
+        ?>
+    </article>
 </body>
 </html>
