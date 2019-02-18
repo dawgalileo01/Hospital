@@ -1,5 +1,5 @@
 <?php
-    //require_once ('./clases/menu.php');
+    require_once ('./clases/menu.php');
     require_once ('./clases/miConexion.php');
     require_once ('./clases/miHospital.php');
 ?>
@@ -9,11 +9,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Document</title>   
+    <link rel="stylesheet" href="./css/estilo.css">
 </head>
 <body>
     <?php
-        //menus();
+        menu();
 
         $dni = $_REQUEST["dni"];
         $direccion = $_REQUEST["direccion"];

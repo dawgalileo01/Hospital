@@ -1,5 +1,5 @@
 <?php
- // require_once ('./clases/menu.php');
+  require_once ('./clases/menu.php');
   require_once ('./clases/miConexion.php');
   require_once ('./clases/miHospital.php');
 ?>
@@ -14,7 +14,7 @@
 </head>
 <body>
     <?php
-        //menu();
+        menu();
 
         if (isset($_REQUEST["dni"])) {
             $hospital = new miHospital();

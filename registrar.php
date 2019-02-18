@@ -15,9 +15,6 @@ include('./clases/miConexion.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="registrar">
-    <header class="cabecera">
-        <h1>Gestión Hospital</h1>
-    </header>
     <article class="formulario">
         <h1>Formulario de registro</h1>
         <form action="#" method="post">

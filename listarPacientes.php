@@ -1,6 +1,7 @@
 <?php
     require_once("./clases/miConexion.php");
     require_once("./clases/miHospital.php");
+    require_once("./clases/menu.php");
     session_name("hospital");
     session_start();
     $hospital=new miHospital();
@@ -17,6 +18,7 @@
 </head>
 <body>
     <?php
+        menu();
         $hospital->listarPacientes($_SESSION["dni"]);
     ?>
 </body>
