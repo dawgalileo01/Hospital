@@ -1,8 +1,9 @@
 <?php
-    session_name("hospital");
-    session_start();
-    require_once("./clases/miConexion.php");
-    require_once("./clases/miHospital.php");
+session_name("hospital");
+session_start();
+require_once("./clases/miConexion.php");
+require_once("./clases/miHospital.php");
+require_once("./clases/menu.php");
 
 
 ?>
@@ -13,8 +14,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Buscar Paciente</title>
+    
+    <link rel="stylesheet" href="./css/estilo.css">
 </head>
 <body>
+    <?php
+        menu();
+    ?>
+
     <form action="#" method="post">
         <h3>Buscar paciente</h3>
         <br><br>
@@ -32,9 +39,9 @@
     <?php
 
 
-    if (isset($_REQUEST["btnBuscar"])){
-        $hospital=new miHospital();
-        $hospital->buscarPaciente($_REQUEST["opciones"],$_REQUEST["valorPaciente"]);
+    if (isset($_REQUEST["btnBuscar"])) {
+        $hospital = new miHospital();
+        $hospital->buscarPaciente($_REQUEST["opciones"], $_REQUEST["valorPaciente"]);
     }
     ?>
 </body>

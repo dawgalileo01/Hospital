@@ -1,3 +1,40 @@
+/*Inicio menu.php*/
+.titulo{
+    text-align: center;
+}
+
+#menu {
+	margin-bottom: 5%;
+}
+
+#menu ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  
+#menu li {
+    flex: 1 1 0;
+    border-right:10px solid transparent;
+}
+  
+#menu a {
+    display: block;
+    text-align: center;
+    padding:1em 0;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    background-color: grey;
+}
+/*Fin menu.php*/
+
+
 /* Inicio index.php*/
 .index{
     margin: 0;
@@ -147,3 +184,43 @@ article.form{
     color: rgb(241, 25, 25);
 }
 /* Fin registrar.php */
+
+/*Inicio bienvenida.php*/
+.bienvenida{
+    text-align: center;
+}
+
+/*.bienvenida>h2{
+
+}*/
+/*Fin bienvenida.php*/
+
+/*Inicio alta.php*/
+.alta{
+    height: 100vh;
+   
+}
+
+.alta>article{
+    display: flex;
+    flex-flow: column nowrap; 
+    align-items: center;
+    justify-content: center;
+}
+
+/*Fin alta.php*/
+
+/*Inicio eliminarPaciente.php*/
+.pregunta, .formularioBorrar {
+    text-align: center;
+}
+
+.volverBorrar {
+    text-decoration: none;
+    border-radius: 10%;
+    padding: 0.5em;
+    margin-left: 47.5%;
+    background-color: blue;
+    color: red;
+}
+/*Fin eliminarPaciente.php*/
