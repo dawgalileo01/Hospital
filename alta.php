@@ -2,6 +2,7 @@
     include('./clases/comprobar.inc.php');
     require_once("./clases/miConexion.php");
     require_once("./clases/miHospital.php");
+    require_once("./clases/menu.php");
     session_name("hospital");
     session_start();
 ?>
@@ -12,9 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/estilo.css">
 </head>
-<body>
+<body class="alta">
+    
 <?php
+    menu();
+    echo "<article>";
     if (isset($_REQUEST["expediente"])) {
         $error = false;
 
@@ -34,23 +39,24 @@
         if(!$error) {
 
 ?>
-    <form action="#" method="post">
-        <p>
-            <label>Descripcion:</label>
-            <textarea name="descripcion" cols="30" rows="5" required="required"></textarea>
-        </p>
-        <p>
-            <label>Severidad:</label>
-            <select name="severidad">
-                <option value="Alta">Alta</option>
-                <option value="Media">Media</option>
-                <option value="Baja">Baja</option>
-            </select>
-        </p>
-        <p>
-            <input type="submit" value="Alta" name="alta">
-        </p>
-    </form>
+    
+        <form action="#" method="post">
+            <p>
+                <label>Descripcion:</label>
+                <textarea name="descripcion" cols="30" rows="5" required="required"></textarea>
+            </p>
+            <p>
+                <label>Severidad:</label>
+                <select name="severidad">
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="Baja">Baja</option>
+                </select>
+            </p>
+            <p>
+                <input type="submit" value="Alta" name="alta">
+            </p>
+        </form>
 <?php
         $_SESSION["dniPaciente"] = $_REQUEST["dni"];
         $_SESSION["nombrePaciente"] = $_REQUEST["nombre"];
@@ -108,5 +114,6 @@
 <?php
 }
 ?>
+</article>
 </body>
 </html>

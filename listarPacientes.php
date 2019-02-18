@@ -1,6 +1,7 @@
 <?php
     require_once("./clases/miConexion.php");
     require_once("./clases/miHospital.php");
+    require_once("./clases/menu.php");
     session_name("hospital");
     session_start();
     $hospital=new miHospital();
@@ -16,6 +17,9 @@
     <link rel="stylesheet" href="./css/estilo.css">
 </head>
 <body class="listar">
+    <?php
+        menu();
+    ?>
     <article class="cuerpoListar">
         <h3>Lista de pacientes</h3>
         <?php

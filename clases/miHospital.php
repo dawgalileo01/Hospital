@@ -59,7 +59,7 @@ class miHospital
         try {
             $opc=$_REQUEST["opciones"];
  
-            $sql="SELECT * FROM pacientes WHERE";
+            $sql="SELECT DNI, NOMBRE, APELLIDOS, CORREO, DIRECCION, CPOSTAL, CIUDAD, PROVINCIA, EXPEDIENTE, SEVERIDAD FROM pacientes WHERE";
             if($opc=="dni"){
                 $sql.=" DNI=?";
 
@@ -76,7 +76,7 @@ class miHospital
 
             $consulta->execute();
 
-            echo "<table class='tablaPaciente' border='1'>";
+            echo "<table class='tablaPaciente'>";
             if ($consulta->rowCount()>0){
                 echo "<thead><tr>";
 
@@ -93,11 +93,11 @@ class miHospital
 				echo "<th>Borrar</th>";
 
                 echo "</tr></thead><tbody>";
-                echo "<tr>";
+                
 
                 while($regto=$consulta->fetch(PDO::FETCH_ASSOC)){
                     $alias="";
-                    
+                    echo "<tr>";
                     foreach ($regto as $ind => $campo) {
                         if($ind=="DNI"){
                             $alias=$campo;
@@ -113,7 +113,7 @@ class miHospital
                 }
 
             } else {
-                echo "<p class='error'>DNI del paciente incorrecto</p>";
+                echo "<p class='error'>Paciente no encontrado</p>";
             }            
             echo "</tbody></table>";
 
@@ -130,7 +130,8 @@ class miHospital
             $consulta->bindParam(1, $dniDoctor);
             $consulta->execute();
             if ($consulta->rowCount() > 0) {
-                echo "<table class='tablaListar'";
+                echo "<form method='post' action='eliminarPaciente.php'>";
+                echo "<table class='tablaListar'>";
                 echo "<thead>";
                 echo "<tr>";
                 echo "<th>Dni</th>";
@@ -166,6 +167,8 @@ class miHospital
                 }
                 echo "</tbody>";
                 echo "</table>";
+                echo "<input type='submit' name='boton' class='boton' value='Borrar'>";
+                echo "</form>";
             } else {
                 echo "<p>No tiene ningún paciente.</p>";
             }
@@ -254,8 +257,13 @@ class miHospital
             echo "<p>CIUDAD: <input type='text' name='ciudad' value='" . $paciente[6] . "'></p>";
             echo "<p>PROVINCIA: <input type='text' name='provincia' value='" . $paciente[7] . "'></p>";
             echo "<p>EXPEDIENTE: <input type='text' name='expediente' value='" . $paciente[8] . "'></p>";
-            echo "<p>SEVERIDAD: <input type='text' name='severidad' value='" . $paciente[9] . "'></p>";
-
+            echo "<p>SEVERIDAD:";
+            echo "<select name='severidad'>";
+            echo "<option value='Alta'>Alta</option>";
+            echo "<option value='Media'>Media</option>";
+            echo "<option value='Baja'>Baja</option>";
+            echo "</select>";
+            echo "</p>";
             echo "<input type='hidden' name='dni' value='" . $dni . "'>";
             echo "<input type='submit' value='Guardar Cambios' name='guardar'>";
             echo "</form>";
@@ -283,11 +291,37 @@ class miHospital
 
             $consulta->execute();
             echo "<p>Paciente actualizado con exito</p>";
-            echo "<a href='index.php'>Volver</a>";
+            echo "<a href='bienvenida.php'>Volver</a>";
         } catch (PDOException $e) {
             echo "<p>Consulta: <b>" . $sql_query . "</b></p>";
             echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
         }
+    }
+
+    public function eliminarPaciente($borrar){
+        try {
+			$this->conex->beginTransaction();
+
+			$id = [];
+
+			for ($i=0; $i < count($borrar); $i++) { 
+				$sql = "DELETE FROM pacientes WHERE dni=?";
+
+				$consulta = $this->conex->prepare($sql);
+				$consulta->bindParam(1, $borrar[$i]);
+
+				$consulta->execute();
+			}
+
+			$this->conex->commit();
+			echo "<p class='pregunta'>Paciente/s eliminado/s con exito</p>";
+			
+			echo "<a href='bienvenida.php' class='volverBorrar'>Volver</a>";
+		} catch (PDOException $e) {
+			$this->conex->rollBack();
+			echo "<p>Consulta: <b>" . $sql . "</b></p>";
+			echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
+		}
     }
 }
 ?>

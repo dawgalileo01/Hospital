@@ -4,10 +4,7 @@
     session_name("hospital");
     session_start();
 
-    if (isset($_REQUEST["btnAcceder"])){
-        $hospital=new miHospital();
-        $hospital->comprobarDoctor($_REQUEST["nif"],md5($_REQUEST["pass"]));
-    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +30,13 @@
             </form>
             
             <a id="btnReg" href="./registrar.php">Registrarse</a>
+
+            <?php
+                if (isset($_REQUEST["btnAcceder"])){
+                    $hospital=new miHospital();
+                    $hospital->comprobarDoctor($_REQUEST["nif"],md5($_REQUEST["pass"]));
+                }
+            ?>
         </article>
     </fieldset>
 </body>

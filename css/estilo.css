@@ -1,3 +1,40 @@
+/*Inicio menu.php*/
+.titulo{
+    text-align: center;
+}
+
+#menu {
+	margin-bottom: 5%;
+}
+
+#menu ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  
+#menu li {
+    flex: 1 1 0;
+    border-right:10px solid transparent;
+}
+  
+#menu a {
+    display: block;
+    text-align: center;
+    padding:1em 0;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    background-color: grey;
+}
+/*Fin menu.php*/
+
+
 /* Inicio index.php*/
 .index{
     margin: 0;
@@ -8,29 +45,23 @@
     background-size: 100% 100%;
     overflow: hidden;
 }
-
 .index>fieldset{
     border:none;
     width: 50vw;
 }
-
-.index>legend{
-    padding-top: 50px;
+.index>fieldset>legend{
     text-align: center;
     color:rgb(210, 25, 31);
-    font-size: 24px;
+    font-size: 28px;
 }
-
 article.form{
     width: 50vw;
-    height: 100%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     font-size: 28px;
 }
-
 #form01{
     height: 50vh;
     display: flex;
@@ -42,7 +73,6 @@ article.form{
 #nif,#pass{
     font-size: 22px;
 }
-
 #btnAcceder,#btnBorrar{
     border:0;
     height: 40px;
@@ -52,19 +82,16 @@ article.form{
     border-radius: 10px;
     font-family: Arial;
 }
-
 #btnAcceder:hover{
     cursor: pointer;
     background-color: rgb(32, 107, 16);
     color: white;
 }
-
 #btnBorrar:hover{
     cursor: pointer;
     background-color: rgb(210, 25, 31);
     color: white;
 }
-
 #btnReg{
     text-decoration: none;
     height: 40px;
@@ -74,7 +101,6 @@ article.form{
     text-align: center;
     border-radius: 10px;
 }
-
 #btnReg:hover{
     cursor: pointer;
     background-color: darkblue;
@@ -93,56 +119,50 @@ article.form{
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
-
 .error{
     color: red;
 }
-    
 .cabecera>h1 {
     color: red;
     text-align: center;
     margin-top: 3%;
 }
-
 .formulario {
     display: flex;
     flex-flow: column nowrap; 
     align-items: center;
     justify-content: center;
 }
-
 .formulario>h1{
     color: rgb(2, 78, 2);
     font-size: 32px;
 }
-
 .formulario>form>fieldset{
     text-align: center;
     border: 1px solid black;
+    background-color: rgba(236, 236, 236, .7);
 }
-
 .formulario>form>fieldset>legend {
     font-size: 24px;
 }
-
 .formulario>form>fieldset>p>label{
     color: black;
-    text-shadow: 2px 2px 9px #000000;
+    /*text-shadow: 2px 2px 9px #000000;*/
+    font-weight: bolder;
 }
-
 .formulario>form>fieldset>p>input[type=submit]{
     font-size: 18px;
 }
-
 .formulario>form>fieldset>p>button{
     font-family: Arial;
     font-size: 18px;
 }
-
+.formulario>form>fieldset>p>button:hover{
+    cursor: pointer;
+}
 .formulario>form>fieldset>p>button[type=submit]>i{
     color:rgb(41, 128, 41);
 }
-
 .formulario>form>fieldset>p>button>i{
     color: rgb(241, 25, 25);
 }
@@ -208,3 +228,95 @@ article.form{
 }
 
 /* Fin listarPacientes.php */
+
+/*Inicio buscarPaciente.php*/
+.cuerpoBuscar{
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("../images/fondoHospital.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.buscar{
+    height: 100vh;
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.form02{
+    display:flex;
+    flex-flow: column nowrap;    
+    border: 1px solid gray;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    padding: 20px;
+    background-color: rgb(240, 240, 240);
+}
+.form02 h3{
+    text-align: center;    
+    font-size: 32px;
+
+}
+#opciones,#valorPaciente{
+    font-size: 22px;
+}
+.btnBuscar{
+    font-size: 26px;
+    border:1px solid black;
+    height: 40px;
+    background-color: rgb(156, 212, 151);
+    transition-duration: 1s;
+    border-radius: 10px;
+    font-family: Arial;
+
+}
+
+.btnBuscar:hover{
+    cursor: pointer;
+    background-color: rgb(32, 107, 16);
+    color: white;
+}
+
+/*Fin buscarPaciente.php*/
+
+/*Inicio bienvenida.php*/
+.bienvenida{
+    text-align: center;
+}
+
+/*.bienvenida>h2{
+
+}*/
+/*Fin bienvenida.php*/
+
+/*Inicio alta.php*/
+.alta{
+    height: 100vh;
+   
+}
+
+.alta>article{
+    display: flex;
+    flex-flow: column nowrap; 
+    align-items: center;
+    justify-content: center;
+}
+
+/*Fin alta.php*/
+
+/*Inicio eliminarPaciente.php*/
+.pregunta, .formularioBorrar {
+    text-align: center;
+}
+
+.volverBorrar {
+    text-decoration: none;
+    border-radius: 10%;
+    padding: 0.5em;
+    margin-left: 47.5%;
+    background-color: blue;
+    color: red;
+}
+/*Fin eliminarPaciente.php*/
