@@ -59,7 +59,7 @@ class miHospital
         try {
             $opc=$_REQUEST["opciones"];
  
-            $sql="SELECT * FROM pacientes WHERE";
+            $sql="SELECT DNI, NOMBRE, APELLIDOS, CORREO, DIRECCION, CPOSTAL, CIUDAD, PROVINCIA, EXPEDIENTE, SEVERIDAD FROM pacientes WHERE";
             if($opc=="dni"){
                 $sql.=" DNI=?";
 
@@ -76,7 +76,7 @@ class miHospital
 
             $consulta->execute();
 
-            echo "<table class='tablaPaciente' border='1'>";
+            echo "<table class='tablaPaciente'>";
             if ($consulta->rowCount()>0){
                 echo "<thead><tr>";
 
@@ -93,11 +93,11 @@ class miHospital
 				echo "<th>Borrar</th>";
 
                 echo "</tr></thead><tbody>";
-                echo "<tr>";
+                
 
                 while($regto=$consulta->fetch(PDO::FETCH_ASSOC)){
                     $alias="";
-                    
+                    echo "<tr>";
                     foreach ($regto as $ind => $campo) {
                         if($ind=="DNI"){
                             $alias=$campo;
@@ -113,7 +113,7 @@ class miHospital
                 }
 
             } else {
-                echo "<p class='error'>DNI del paciente incorrecto</p>";
+                echo "<p class='error'>Paciente no encontrado</p>";
             }            
             echo "</tbody></table>";
 
