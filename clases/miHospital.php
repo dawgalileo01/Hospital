@@ -19,7 +19,7 @@ class miHospital
                 $_SESSION["dni"]=$nif;
                 header("Location: ./bienvenida.php");
             } else {
-                echo "<p class='error'>El usuario o la contraseña introducido/a no es válida.</p>";
+                echo "<p class='errorIndex'>El usuario o la contraseña introducido/a no es válida.</p>";
             }
         } catch (PDOException $e){
             echo "<p>Consulta: <b>" . $sql . "</b></p>";
@@ -199,8 +199,8 @@ class miHospital
 
             $consulta->execute();
 
-           echo "<p>" . $sql . "</p>";
-           echo "<p>Paciente registrado con éxito</p>";
+           //echo "<p>" . $sql . "</p>";
+           echo "<p class='exito'>Paciente registrado con éxito</p>";
         } catch (PDOException $e) {
 			echo "<p class='error'>Error: " . $e->getMessage() . "</p>";
 
@@ -229,7 +229,7 @@ class miHospital
 
             echo "<form action='modificarPaciente.php' method='post'>";
             echo "<input type='hidden' name='dni' value='" . $dni . "'>";
-            echo "<input type='submit' value='Modificar' name='modificar'>";
+            echo "<input type='submit' value='Modificar' name='modificar' class='btnModificar'>";
             echo "</form>";
         } catch (PDOException $e) {
             echo "<p>Consulta: <b>" . $sql_query . "</p>";
@@ -265,7 +265,7 @@ class miHospital
             echo "</select>";
             echo "</p>";
             echo "<input type='hidden' name='dni' value='" . $dni . "'>";
-            echo "<input type='submit' value='Guardar Cambios' name='guardar'>";
+            echo "<input type='submit' value='Guardar Cambios' name='guardar' class='guardar'>";
             echo "</form>";
         } catch (PDOException $e) {
             echo "<p>Consulta: <b>" . $sql_query . "</b></p>";

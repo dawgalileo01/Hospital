@@ -12,14 +12,21 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./css/estilo.css" />
 </head>
-<body>
+<body class="modificar">
     <?php
         menu();
-
-        if (isset($_REQUEST["dni"])) {
-            $hospital = new miHospital();
-            $hospital->modificarPaciente($_REQUEST["dni"]);
-        }
     ?>
+    <article>
+        <fieldset class="fieldsetModificar">
+        <legend>Modificar paciente</legend>
+                <?php
+                    if (isset($_REQUEST["dni"])) {
+                        $hospital = new miHospital();
+                        $hospital->modificarPaciente($_REQUEST["dni"]);
+                    }
+                ?>
+        </fieldset>
+    </article>
+
 </body>
 </html>

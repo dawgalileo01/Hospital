@@ -1,6 +1,7 @@
 /*Inicio menu.php*/
 .titulo{
     text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #menu {
@@ -19,7 +20,11 @@
     flex: 1 1 0;
     border-right:10px solid transparent;
 }
-  
+
+#menu li:nth-child(1){
+    border-left: 10px solid transparent;
+}
+
 #menu a {
     display: block;
     text-align: center;
@@ -53,6 +58,7 @@
     text-align: center;
     color:rgb(210, 25, 31);
     font-size: 28px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 article.form{
     width: 50vw;
@@ -105,7 +111,13 @@ article.form{
     cursor: pointer;
     background-color: darkblue;
 }
-
+.errorIndex{
+    color:red;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
 /* Fin index.php*/
 
 /* Inicio registrar.php */
@@ -126,6 +138,7 @@ article.form{
     color: red;
     text-align: center;
     margin-top: 3%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .formulario {
     display: flex;
@@ -144,15 +157,16 @@ article.form{
 }
 .formulario>form>fieldset>legend {
     font-size: 24px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .formulario>form>fieldset>p>label{
     color: black;
-    /*text-shadow: 2px 2px 9px #000000;*/
     font-weight: bolder;
+    display: inline-block;
+    width: 140px;
+    text-align: left;
 }
-.formulario>form>fieldset>p>input[type=submit]{
-    font-size: 18px;
-}
+
 .formulario>form>fieldset>p>button{
     font-family: Arial;
     font-size: 18px;
@@ -173,9 +187,20 @@ article.form{
 .listar{
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
-    background-image: url();
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/fondoHospital.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+.listar>div{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-bottom: 50px;
 }
 .cuerpoListar>h3{
     margin: 0;
@@ -184,8 +209,11 @@ article.form{
     font-weight: lighter;
     font-size: 24px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
 }
 .cuerpoListar{
+    width: fit-content;
+    padding: 10px;
     display: flex;
     flex-flow: column nowrap;
     border-top: 2px solid black;
@@ -194,7 +222,12 @@ article.form{
     border-right: 1px solid lightgrey;
     padding:1em;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-    background-color: white;
+    background-color: rgba(236, 236, 236, .7);
+    text-align: center;
+
+}
+.cuerpoListar>form{
+    margin: 0 auto;
 }
 .tablaListar, td, th{
     border-collapse: collapse;
@@ -222,8 +255,10 @@ article.form{
     font-weight: bolder;
     font-size: 20px;
     border: 2px solid black;
+    margin-top: 10px;
 }
 .cuerpoListar input[type=submit]:hover{
+    cursor: pointer;
     background-color: lightgrey;
 }
 
@@ -231,16 +266,17 @@ article.form{
 
 /*Inicio buscarPaciente.php*/
 .cuerpoBuscar{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     background-image: url("../images/fondoHospital.png");
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 }
 .buscar{
-    height: 100vh;
+    /*height: 100vh;*/
     display:flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -257,6 +293,7 @@ article.form{
 .form02 h3{
     text-align: center;    
     font-size: 32px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 #opciones,#valorPaciente{
@@ -282,19 +319,40 @@ article.form{
 /*Fin buscarPaciente.php*/
 
 /*Inicio bienvenida.php*/
+.welcome{
+    background-image: url("../images/fondoHospital.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 .bienvenida{
     text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.bienvenida>h2{
+    width: fit-content;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: rgba(236, 236, 236, .7);
+    font-size: 32px;
 }
 
-/*.bienvenida>h2{
 
-}*/
+
 /*Fin bienvenida.php*/
 
 /*Inicio alta.php*/
+
 .alta{
-    height: 100vh;
-   
+    height: 100%;
+    margin:0;
+
+    background-image: url("../images/fondoHospital.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .alta>article{
@@ -303,20 +361,211 @@ article.form{
     align-items: center;
     justify-content: center;
 }
+.alta>article>fieldset{
+    background-color: rgba(236, 236, 236, .7);
+    text-align: center;
+
+}
+.alta>article>fieldset>legend{
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.alta form>p{
+    font-weight: bolder;
+
+}
+.alta form>p>label{
+    display: inline-block;
+    width: 140px;
+    text-align: left;
+}
+
+
+.alta form>p>.expediente{
+    cursor: pointer;
+    border:1px solid black;
+    background-color: rgb(173, 173, 173);
+    font-size: 24px;
+    transition-duration: 1s;
+}
+.alta form>p>.expediente:hover{
+    background-color: black;
+    color:white;
+    border:1px solid white;
+
+}
+.alta form>p>.btnAlta{
+    cursor: pointer;
+    border:1px solid black;
+    background-color: rgb(173, 173, 173);
+    font-size: 24px;
+    transition-duration: 1s;
+}
+.alta form>p>.btnAlta:hover{
+    background-color: black;
+    color:white;
+    border:1px solid white;
+}
+.alta > article > p{
+    font-size: 32px;
+    font-weight: bolder;
+    color: green;
+    border:2px solid black;
+    background-color: rgba(236, 236, 236, .7);
+    padding: 10px;
+}
+
 
 /*Fin alta.php*/
 
 /*Inicio eliminarPaciente.php*/
+.borrar{
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/fondoHospital.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 .pregunta, .formularioBorrar {
     text-align: center;
 }
+.pregunta{
+    font-size: 22px;
+
+}
+.borrar>form>.confirmar{
+    cursor: pointer;
+    font-size: 24px;
+    transition-duration: 1s;
+
+}
+.borrar>form>.confirmar:hover{
+   background-color: green;
+   color:white;
+    
+}
+
+.borrar>form>.cancelar{
+    cursor: pointer;
+    font-size: 24px;
+}
+.borrar>form>.cancelar:hover{
+    background-color: red;
+    color:white;
+     
+ }
 
 .volverBorrar {
+    cursor: pointer;
     text-decoration: none;
     border-radius: 10%;
     padding: 0.5em;
     margin-left: 47.5%;
-    background-color: blue;
-    color: red;
+    font-size: 20px;
+    background-color: rgb(173, 173, 173);
+    color: black;
 }
+.volverBorrar:hover{
+    background-color: black;
+    color:white;
+}
+
 /*Fin eliminarPaciente.php*/
+
+/* inicio mostarPaciente.php*/
+
+.mostrar{
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/fondoHospital.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.contenedor{
+    display: flex;
+    justify-content: center;
+}
+.contenedor>fieldset{
+    text-align: center;
+    width: fit-content;
+    background-color: rgba(236, 236, 236, .7);
+}
+.contenedor>fieldset>legend{
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.contenedor>fieldset>p{
+
+    text-align: left;
+}
+/*Fin mostrarPaciente.php*/
+
+/*inicio modificarPaciente.php*/
+
+.modificar{
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/fondoHospital.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.modificar>article{
+    display: flex;
+    justify-content: center;
+}
+
+.fieldsetModificar{
+    text-align: center;
+    width: fit-content;
+    background-color: rgba(236, 236, 236, .7);
+}
+
+.fieldsetModificar>legend{
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.mostrar > article > fieldset > form > input.btnModificar{
+    cursor: pointer;
+    border:1px solid black;
+    background-color: rgb(173, 173, 173);
+    font-size: 24px;
+    transition-duration: 1s;
+
+}
+.mostrar > article > fieldset > form > input.btnModificar:hover{
+    background-color: black;
+    color:white;
+    border:1px solid white;
+}
+
+.modificar > article > fieldset > form > input.guardar{
+    cursor: pointer;
+    border:1px solid black;
+    background-color: rgb(173, 173, 173);
+    font-size: 24px;
+    transition-duration: 1s;
+}
+
+.modificar > article > fieldset > form > input.guardar:hover{
+    background-color: black;
+    color:white;
+    border:1px solid white;
+}
+.fieldsetModificar>form>p{
+
+    text-align: left;
+}
+/*fin modificarPaciente.php*/

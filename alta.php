@@ -39,7 +39,8 @@
         if(!$error) {
 
 ?>
-    
+    <fieldset>
+        <legend>Nuevo paciente</legend>
         <form action="#" method="post">
             <p>
                 <label>Descripcion:</label>
@@ -54,9 +55,10 @@
                 </select>
             </p>
             <p>
-                <input type="submit" value="Alta" name="alta">
+                <input type="submit" value="Alta" name="alta" class="btnAlta">
             </p>
         </form>
+    </fieldset>
 <?php
         $_SESSION["dniPaciente"] = $_REQUEST["dni"];
         $_SESSION["nombrePaciente"] = $_REQUEST["nombre"];
@@ -74,6 +76,8 @@
         $miHospital->altaPaciente($_SESSION["dniPaciente"], $_SESSION["nombrePaciente"], $_SESSION["apellidosPaciente"], $_SESSION["correoPaciente"], $_SESSION["direccionPaciente"], $_SESSION["cpostalPaciente"], $_SESSION["ciudadPaciente"], $_SESSION["provinciaPaciente"], $_REQUEST["descripcion"], $_REQUEST["severidad"], $_SESSION["dni"]);
     } else {
 ?>
+<fieldset>
+    <legend>Nuevo paciente</legend>
     <form action="#" method="post">
         <p>
             <label>DNI (*):</label>
@@ -108,12 +112,14 @@
             <input type="text" name="provincia" required="required">
         </p>
         <p>
-            <input type="submit" value="Expediente" name="expediente">
+            <input type="submit" value="Expediente" name="expediente" class="expediente">
         </p>
     </form>
+</fieldset>
 <?php
 }
 ?>
+
 </article>
 </body>
 </html>

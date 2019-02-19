@@ -41,21 +41,21 @@ require_once("./clases/menu.php");
         </form>
         
     </div>
-    <article class="cuerpoListar">
-
+    <br>
     <?php
         if (isset($_REQUEST["btnBuscar"])){
+            echo "<article class=cuerpoListar>";
             if($_REQUEST["opciones"]!="vacio"){
                 $hospital=new miHospital();
                 $hospital->buscarPaciente($_REQUEST["opciones"],$_REQUEST["valorPaciente"]);
             }else{
                 echo "<h2 class=error>Error. Seleccione una opcion.</h2>";
             }
+            echo "</article>";
         }
 
     ?>
 
-    </article>
     
 </body>
 </html>

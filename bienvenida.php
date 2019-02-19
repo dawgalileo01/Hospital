@@ -14,7 +14,7 @@ session_start();
     <title>Document</title>
     <link rel="stylesheet" href="./css/estilo.css">
 </head>
-<body>
+<body class="welcome">
     <?php
         menu();
     ?>

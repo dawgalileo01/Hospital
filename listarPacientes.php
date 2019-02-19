@@ -20,11 +20,13 @@
     <?php
         menu();
     ?>
-    <article class="cuerpoListar">
-        <h3>Lista de pacientes</h3>
-        <?php
-            $hospital->listarPacientes($_SESSION["dni"]);
-        ?>
-    </article>
+    <div>
+        <article class="cuerpoListar">
+            <h3>Lista de pacientes</h3>
+            <?php
+                $hospital->listarPacientes($_SESSION["dni"]);
+            ?>
+        </article>
+    </div>
 </body>
 </html>

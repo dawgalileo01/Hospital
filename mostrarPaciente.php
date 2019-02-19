@@ -13,14 +13,21 @@ require_once('./clases/miHospital.php');
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./css/estilo.css" />
 </head>
-<body>
+<body class="mostrar">
     <?php
         menu();
-
-        if (isset($_REQUEST["dni"])) {
-            $hospital = new miHospital();
-            $hospital -> infoPaciente($_REQUEST["dni"]);
-        }
     ?>
+    <article class="contenedor">
+        <fieldset>
+            <legend>Datos paciente</legend>
+            <?php
+            if (isset($_REQUEST["dni"])) {
+                $hospital = new miHospital();
+                $hospital -> infoPaciente($_REQUEST["dni"]);
+            }
+        ?>
+        </fieldset>
+    </article>
+
 </body>
 </html>
